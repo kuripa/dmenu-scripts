@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# config files settings
+# config[]="$HOME/"
+declare -A config 
+config[alacritty]="$HOME/.config/alacritty/alacritty.yml"
+config[spectrwm]="$HOME/.config/spectrwm/spectrwm.conf"
+config[spectrwm mapping]="$HOME/.config/spectrwm/mapping.conf"
+config[xinitrc]="$HOME/.xinitrc"
+config[bash]="$HOME/.bashrc"
+config[gitconfig]="$HOME/.gitconfig"
+config[starship]="$HOME/.config/starship.toml"
+config[dunst]="$HOME/.config/dunst/dunstrc"
+config[config]="$HOME/repo/dmenu-scripts/config"
+
+# screenshot settings
+scrot_path="$HOME/pictures/screenshots/"
+scrot_format="%Y-%m-%d_%H-%M-%S-screenshot.png"
+scrot_style="style=solid,width=1,color="#d79921""
+scrot_quality="100"

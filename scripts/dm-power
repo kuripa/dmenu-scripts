@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+declare -a options=(
+"Lock"
+"Shutdown"
+"Reboot"
+)
+
+choice=$(printf "%s\n" "${options[@]}" | dmenu -i -l 3 -p "Power:")
+
+if [[ $choice == "Lock" ]]; then
+	slock 
+elif [[ $choice == "Shutdown" ]]; then
+	sudo poweroff
+elif [[ $choice == "Reboot" ]]; then
+	sudo reboot
+fi

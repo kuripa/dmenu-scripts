@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -euo pipefail
+
+#_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd "$(dirname "$(readlink "${BASH_SOURCE[0]}" || echo ".")")" && pwd)"
+#source "${_path}/config" 
+
+source "$HOME/.config/dm-scripts/config"
+
+declare -a options=(
+"flameshot"
+"region"
+"focused window"
+"all displays"
+)
+
+main () {
+  choice=$(printf "%s\n" "${options[@]}" | dmenu -i -l 5 -p "Take screenshot:")
+  case "$choice" in
+    "flameshot" )
+      flameshot gui -p ${scrot_path} ;;
+    "all displays" )
+      scrot ${scrot_path}${scrot_format} -m -q ${scrot_quality}  ;;
+    "focused window" )
+      scrot ${scrot_path}${scrot_format} -u -q ${scrot_quality} ;; 
+    "region" )
+      scrot ${scrot_path}${scrot_format} -s -q ${scrot_quality} -l ${scrot_style} ;;
+  esac
+}
+
+main "$@"
